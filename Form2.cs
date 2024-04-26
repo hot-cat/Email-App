@@ -15,12 +15,14 @@ namespace EmailApp
     {
 
         private string connectionString = @"Data Source=LAB108PC01\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
+        private string emailUser = "";
 
-        public Form2()
+        public Form2(string emailUser)
         {
             InitializeComponent();
 
-            LoadEmails("yasen@gmail.com");
+            this.emailUser = emailUser;
+            LoadEmails(emailUser);
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -31,14 +33,14 @@ namespace EmailApp
 
         private void buttonLoadEmails_Click(object sender, EventArgs e)
         {
-            LoadEmails("yasen@gmail.com");
+            LoadEmails(emailUser);
         }
 
         private void LoadEmails(string receiverEmail)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT SenderEmail, DateSent, Subject FROM Emails WHERE ReceiverEmail = @ReceiverEmail ORDER BY DateSent DESC";
+                string query = "SELECT SenderEmail, DateSent, Subject, EmailBody  FROM Emails WHERE ReceiverEmail = @ReceiverEmail ORDER BY DateSent DESC";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ReceiverEmail", receiverEmail);
 
@@ -66,11 +68,30 @@ namespace EmailApp
                 if (dgv != null)
                 {
                     // Assuming you have a column "Email" in your DataGridView
-                    string email = dgv.Rows[e.RowIndex].Cells["Subject"].Value.ToString();
-                    MessageBox.Show("Double-clicked row email: " + email);
+                    string emailSubject = dgv.Rows[e.RowIndex].Cells["Subject"].Value.ToString();
+                    string emailBody = dgv.Rows[e.RowIndex].Cells["EmailBody"].Value.ToString();
+                    string senderEmail = dgv.Rows[e.RowIndex].Cells["SenderEmail"].Value.ToString();
+                    string date = dgv.Rows[e.RowIndex].Cells["DateSent"].Value.ToString();
+
+                    Form3 form = new Form3(senderEmail, date, emailSubject, emailBody);
+
+                    form.Show();
+
+
                 }
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form4 form = new Form4();
+            form.Show();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoadEmails(emailUser);
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace EmailApp
         {
             InitializeComponent();
             // Set the initial state of the controls when the form loads
-            radioButton1.Checked = true; // Assuming the login radio button is named radioButton1
-            textBox3.Visible = false; // Assuming the repeat password text box is named textBox3
-            button1.Text = "Log In"; // Assuming the submit button is named button1
+            radioButton1.Checked = true; 
+            textBox3.Visible = false;
+            button1.Text = "Log In"; 
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -59,9 +59,9 @@ namespace EmailApp
                 bool result = dbHelper.Login(email, password);
                 if (result)
                 {
-                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Form2 form = new Form2();
+                    Form2 form = new Form2(email);
        
                     form.Show();
 

@@ -23,3 +23,5 @@ H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\refint\Email
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.pdb
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.genruntimeconfig.cache
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\ref\EmailApp.dll
+H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.Form3.resources
+H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.Form4.resources

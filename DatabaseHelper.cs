@@ -143,5 +143,34 @@ namespace EmailApp
                 return builder.ToString();
             }
         }
+
+        public void InsertEmail(string senderEmail, string receiverEmail, string bccEmails, string ccEmails, string dateSent, string subject, string emailBody)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Define the SQL query to insert a new email
+                string query = @"
+            INSERT INTO Emails (SenderEmail, ReceiverEmail, BccEmails, CcEmails, DateSent, Subject, EmailBody) 
+            VALUES (@SenderEmail, @ReceiverEmail, @BccEmails, @CcEmails, @DateSent, @Subject, @EmailBody)";
+
+                // Create a SqlCommand object
+                SqlCommand command = new SqlCommand(query, connection);
+
+                // Add parameters to avoid SQL injection
+                command.Parameters.AddWithValue("@SenderEmail", senderEmail);
+                command.Parameters.AddWithValue("@ReceiverEmail", receiverEmail);
+                command.Parameters.AddWithValue("@BccEmails", bccEmails ?? string.Empty); // Handle null with an empty string
+                command.Parameters.AddWithValue("@CcEmails", ccEmails ?? string.Empty);   // Handle null with an empty string
+                command.Parameters.AddWithValue("@DateSent", dateSent);
+                command.Parameters.AddWithValue("@Subject", subject);
+                command.Parameters.AddWithValue("@EmailBody", emailBody);
+
+                // Open the connection, execute the command and close the connection
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
     }
 }
