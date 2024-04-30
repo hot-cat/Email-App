@@ -77,12 +77,12 @@ namespace EmailApp
             }
         }
 
-        public bool Login(string email, string password)
+        public int Login(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT DateCreated, HashedPassword FROM Users WHERE Email = @Email";
+                string query = "SELECT UserID, DateCreated, HashedPassword FROM Users WHERE Email = @Email";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Email", email);
 
@@ -90,18 +90,23 @@ namespace EmailApp
                 {
                     if (reader.Read())
                     {
-                        string dateCreated = reader.GetString(0);
-                        string storedHashedPassword = reader.GetString(1);
+                        int userId = reader.GetInt32(0);
+                        string dateCreated = reader.GetString(1);
+                        string storedHashedPassword = reader.GetString(2);
                         string computedHash = HashPasswordWithDate(password, dateCreated);
 
-                        return storedHashedPassword.Equals(computedHash);
+                        if (storedHashedPassword.Equals(computedHash))
+                        {
+                            return userId;
+                        }
                     }
                 }
             }
-            return false;
+            return -1;
         }
 
-        public bool Register(string email, string password)
+
+        public int Register(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -116,18 +121,28 @@ namespace EmailApp
                 int userExists = Convert.ToInt32(checkUserCommand.ExecuteScalar());
                 if (userExists == 0)
                 {
-                    string insertQuery = "INSERT INTO Users (Email, HashedPassword, DateCreated) VALUES (@Email, @HashedPassword, @DateCreated)";
+                    string insertQuery = "INSERT INTO Users (Email, HashedPassword, DateCreated) OUTPUT INSERTED.UserID VALUES (@Email, @HashedPassword, @DateCreated)";
                     SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
                     insertCommand.Parameters.AddWithValue("@Email", email);
                     insertCommand.Parameters.AddWithValue("@HashedPassword", hashedPassword);
                     insertCommand.Parameters.AddWithValue("@DateCreated", todayDate);
 
-                    insertCommand.ExecuteNonQuery();
-                    return true;
+                    int newUserId = (int)insertCommand.ExecuteScalar();
+
+                    // Insert a basic entry into UserInformation table
+                    string insertInfoQuery = "INSERT INTO UserInformation (UserID, Email) VALUES (@UserID, @Email)";
+                    SqlCommand insertInfoCommand = new SqlCommand(insertInfoQuery, connection);
+                    insertInfoCommand.Parameters.AddWithValue("@UserID", newUserId);
+                    insertInfoCommand.Parameters.AddWithValue("@Email", email);
+                    insertInfoCommand.ExecuteNonQuery();
+
+                    return newUserId;
                 }
             }
-            return false;
+            return -1;
         }
+
+
 
         private string HashPasswordWithDate(string password, string date)
         {
@@ -171,6 +186,66 @@ namespace EmailApp
                 connection.Close();
             }
         }
+
+        public UserInfo GetUserInfo(int userId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT UserID, Email, FirstName, LastName, Sex, Profession, ProfilePicture FROM UserInformation WHERE UserID = @UserID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserID", userId);
+
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new UserInfo
+                        {
+                            UserID = reader.GetInt32(0),
+                            Email = reader.GetString(1),
+                            FirstName = reader.IsDBNull(2) ? null : reader.GetString(2),
+                            LastName = reader.IsDBNull(3) ? null : reader.GetString(3),
+                            Sex = reader.IsDBNull(4) ? null : reader.GetString(4),
+                            Profession = reader.IsDBNull(5) ? null : reader.GetString(5),
+                            ProfilePicture = reader.IsDBNull(6) ? null : reader.GetString(6)
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+
+        public void UpdateUserInfo(UserInfo userInfo)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+        UPDATE UserInformation SET 
+            Email = @Email, 
+            FirstName = @FirstName, 
+            LastName = @LastName, 
+            Sex = @Sex, 
+            Profession = @Profession, 
+            ProfilePicture = @ProfilePicture 
+        WHERE UserID = @UserID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserID", userInfo.UserID);
+                command.Parameters.AddWithValue("@Email", userInfo.Email);
+                command.Parameters.AddWithValue("@FirstName", userInfo.FirstName ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@LastName", userInfo.LastName ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@Sex", userInfo.Sex ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@Profession", userInfo.Profession ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@ProfilePicture", userInfo.ProfilePicture ?? (object)DBNull.Value);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+
 
     }
 }

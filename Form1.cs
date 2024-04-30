@@ -56,8 +56,8 @@ namespace EmailApp
 
             if (radioButton1.Checked) // Login
             {
-                bool result = dbHelper.Login(email, password);
-                if (result)
+                int result = dbHelper.Login(email, password);
+                if (result != -1)
                 {
                     //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -77,11 +77,16 @@ namespace EmailApp
                 string repeatPassword = textBox3.Text; // Repeat password input
                 if (password == repeatPassword)
                 {
-                    bool result = dbHelper.Register(email, password);
-                    if (result)
+                    int result = dbHelper.Register(email, password);
+                    if (result != -1)
                     {
                         MessageBox.Show("Registration successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         // Transition to login or directly into the application
+                        Form2 form = new Form2(email);
+
+                        form.Show();
+
+                        this.Hide();
                     }
                     else
                     {
