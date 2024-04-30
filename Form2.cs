@@ -84,7 +84,7 @@ namespace EmailApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form4 form = new Form4();
+            Form4 form = new Form4(emailUser);
             form.Show();
 
         }
@@ -148,6 +148,29 @@ namespace EmailApp
                 // Display the results in DataGridView
                 dataGridView1.DataSource = table;
                 dataGridView1.Columns["SenderEmail"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadSentEmails(emailUser);
+        }
+
+        private void LoadSentEmails(string senderEmail)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT ReceiverEmail, DateSent, Subject, EmailBody FROM Emails WHERE SenderEmail = @SenderEmail ORDER BY DateSent DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@SenderEmail", senderEmail);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                dataGridView1.DataSource = table;
+                dataGridView1.Columns["ReceiverEmail"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }

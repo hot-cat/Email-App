@@ -12,9 +12,11 @@ namespace EmailApp
 {
     public partial class Form4 : Form
     {
-        public Form4()
+        private string myEmail = "";
+        public Form4(string myEmail)
         {
             InitializeComponent();
+            this.myEmail = myEmail;
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -29,7 +31,9 @@ namespace EmailApp
             string formattedDate = today.ToString("yyyy-MM-dd");
 
             DatabaseHelper databaseHelper = new DatabaseHelper();
-            databaseHelper.InsertEmail("john.doe@example.com", "yasen@gmail.com", null, null, formattedDate, textBox2.Text, richTextBox1.Text);
+            databaseHelper.InsertEmail(myEmail, textBox1.Text, null, null, formattedDate, textBox2.Text, richTextBox1.Text);
+            this.Hide();
         }
+
     }
 }
