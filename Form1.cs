@@ -61,9 +61,17 @@ namespace EmailApp
                 {
                     //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Form2 form = new Form2(email);
-       
-                    form.Show();
+                    if(email == "admin")
+                    {
+                        Form7 form7 = new Form7();
+                        form7.Show();
+                        
+                    } else {
+                        Form2 form = new Form2(email);
+
+                        form.Show();
+                    }
+                    
 
                     this.Hide();
                 }

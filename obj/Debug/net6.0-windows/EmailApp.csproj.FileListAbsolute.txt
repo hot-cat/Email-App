@@ -26,3 +26,33 @@ H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\ref\EmailApp
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.Form3.resources
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.Form4.resources
 H:\Yasen\csharpprojects\EmailApp\Email-App\obj\Debug\net6.0-windows\EmailApp.Form5.resources
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\EmailApp.exe
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\EmailApp.deps.json
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\EmailApp.runtimeconfig.json
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\EmailApp.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\EmailApp.pdb
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Work\source code\Email-App\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.csproj.AssemblyReference.cache
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form1.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form2.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form3.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form4.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form5.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.csproj.GenerateResource.cache
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.AssemblyInfoInputs.cache
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.AssemblyInfo.cs
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.csproj.CoreCompileInputs.cache
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.csproj.CopyComplete
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.dll
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\refint\EmailApp.dll
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.pdb
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.genruntimeconfig.cache
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\ref\EmailApp.dll
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form6.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form7.resources

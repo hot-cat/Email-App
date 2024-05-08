@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\y.horozov24.ACSLAB.000\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\y.horozov24.ACSLAB.000\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\yasen\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\yasen\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

@@ -11,7 +11,8 @@ namespace EmailApp
 {
     internal class DatabaseHelper
     {
-        private string connectionString = @"Data Source=LAB108PC01\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
+        //private string connectionString = @"Data Source=LAB108PC01\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
+        private string connectionString = @"Data Source=M2MDEVYH-2T15\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
 
         public DataTable GetAllUsers()
         {

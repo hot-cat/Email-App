@@ -14,7 +14,8 @@ namespace EmailApp
     public partial class Form2 : Form
     {
 
-        private string connectionString = @"Data Source=LAB108PC01\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
+        //private string connectionString = @"Data Source=LAB108PC01\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
+        private string connectionString = @"Data Source=M2MDEVYH-2T15\SQLEXPRESS;Initial Catalog=EmailApp;Integrated Security=True";
         private string emailUser = "";
 
         public Form2(string emailUser)
@@ -154,7 +155,9 @@ namespace EmailApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoadSentEmails(emailUser);
+            Form6 form = new Form6(emailUser);
+            form.Show();
+
         }
 
         private void LoadSentEmails(string senderEmail)
