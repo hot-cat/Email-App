@@ -188,13 +188,13 @@ namespace EmailApp
             }
         }
 
-        public UserInfo GetUserInfo(int userId)
+        public UserInfo GetUserInfo(string emailaddress)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT UserID, Email, FirstName, LastName, Sex, Profession, ProfilePicture FROM UserInformation WHERE UserID = @UserID";
+                string query = "SELECT UserID, Email, FirstName, LastName, Sex, Profession, ProfilePicture FROM UserInformation WHERE Email = @Email";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@UserID", userId);
+                command.Parameters.AddWithValue("@Email", emailaddress);
 
                 connection.Open();
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -244,6 +244,25 @@ namespace EmailApp
                 command.ExecuteNonQuery();
             }
         }
+
+        public string GetProfilePictureByEmail(string email)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT ProfilePicture FROM UserInformation WHERE Email = @Email";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Email", email);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    return result.ToString();
+                }
+                return null; // Return null if no profile picture is found
+            }
+        }
+
 
 
 

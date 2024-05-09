@@ -31,8 +31,21 @@ namespace EmailApp
             string formattedDate = today.ToString("yyyy-MM-dd");
 
             DatabaseHelper databaseHelper = new DatabaseHelper();
-            databaseHelper.InsertEmail(myEmail, textBox1.Text, null, null, formattedDate, textBox2.Text, richTextBox1.Text);
-            this.Hide();
+            Boolean success = true;
+            try
+            {
+                databaseHelper.InsertEmail(myEmail, textBox1.Text, null, null, formattedDate, textBox2.Text, richTextBox1.Text);
+            } catch 
+            {
+                
+                    MessageBox.Show("The receipient email is invalid, please check for typos.", "Wrong receipient email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    success = false;
+            }
+                if (success)
+                {
+
+                    this.Hide();
+                }
         }
 
     }

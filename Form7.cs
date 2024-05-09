@@ -16,6 +16,9 @@ namespace EmailApp
             InitializeComponent();
             LoadAllEmails();
             LoadUserInformation();
+
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            dataGridView2.CellDoubleClick += DataGridView2_CellDoubleClick;
         }
 
         // Load all emails
@@ -163,5 +166,49 @@ namespace EmailApp
             LoadAllEmails();
             LoadUserInformation();
         }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                String body = dataGridView1.Rows[e.RowIndex].Cells["EmailBody"].Value.ToString();
+                if (MessageBox.Show("Are you sure you want to delete this email? \n The body of the email: \n" + body, "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string emailId = dataGridView1.Rows[e.RowIndex].Cells["Subject"].Value.ToString(); // Assuming EmailId column exists
+                        string deleteQuery = "DELETE FROM Emails WHERE Subject = @Subject";
+                        SqlCommand command = new SqlCommand(deleteQuery, connection);
+                        command.Parameters.AddWithValue("@Subject", emailId);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    LoadAllEmails(); // Refresh the DataGridView
+                }
+            }
+        }
+
+        private void DataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string userId = dataGridView2.Rows[e.RowIndex].Cells["UserID"].Value.ToString();
+                        string deleteQuery = "DELETE FROM UserInformation WHERE UserID = @UserID";
+                        SqlCommand command = new SqlCommand(deleteQuery, connection);
+                        command.Parameters.AddWithValue("@UserID", userId);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    LoadUserInformation(); // Refresh the DataGridView
+                }
+            }
+        }
+
     }
 }

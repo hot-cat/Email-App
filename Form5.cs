@@ -13,12 +13,12 @@ namespace EmailApp
     public partial class Form5 : Form
     {
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        private int userId; // This should be set appropriately
+        private string emailUser; // This should be set appropriately
         private UserInfo userInfo;
 
-        public Form5(int userId)
+        public Form5(string email)
         {
-            this.userId = userId;
+            this.emailUser = email;
             InitializeComponent();
         }
 
@@ -29,7 +29,7 @@ namespace EmailApp
 
         private void LoadUserData()
         {
-            userInfo = dbHelper.GetUserInfo(userId);
+            userInfo = dbHelper.GetUserInfo(emailUser);
             if (userInfo != null)
             {
                 textBox1.Text = userInfo.Email; // Email
@@ -54,6 +54,7 @@ namespace EmailApp
                     using (MemoryStream ms = new MemoryStream(imageBytes))
                     {
                         pictureBox1.Image = Image.FromStream(ms);
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
                 }
             }
@@ -109,6 +110,11 @@ namespace EmailApp
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

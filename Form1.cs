@@ -11,9 +11,9 @@ namespace EmailApp
         {
             InitializeComponent();
             // Set the initial state of the controls when the form loads
-            radioButton1.Checked = true; 
+            radioButton1.Checked = true;
             textBox3.Visible = false;
-            button1.Text = "Log In"; 
+            button1.Text = "Log In";
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace EmailApp
             if (radioButton1.Checked)
             {
                 textBox3.Visible = false; // Hide the repeat password box for login
-                label4.Visible = false;
+                label3.Visible = false;
                 button1.Text = "Log In";
             }
         }
@@ -43,7 +43,7 @@ namespace EmailApp
             if (radioButton2.Checked)
             {
                 textBox3.Visible = true; // Show the repeat password box for registration
-                label4.Visible = true;
+                label3.Visible = true;
                 button1.Text = "Register";
             }
 
@@ -54,24 +54,30 @@ namespace EmailApp
             string email = textBox1.Text; // Email input
             string password = textBox2.Text; // Password input
 
-            if (radioButton1.Checked) // Login
+            if (password.Length < 8 && email != "admin")
+            {
+                MessageBox.Show("Password is too short.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (radioButton1.Checked) // Login
             {
                 int result = dbHelper.Login(email, password);
                 if (result != -1)
                 {
                     //MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if(email == "admin")
+                    if (email == "admin")
                     {
                         Form7 form7 = new Form7();
                         form7.Show();
-                        
-                    } else {
+
+                    }
+                    else
+                    {
                         Form2 form = new Form2(email);
 
                         form.Show();
                     }
-                    
+
 
                     this.Hide();
                 }
@@ -106,6 +112,27 @@ namespace EmailApp
                     MessageBox.Show("Passwords do not match.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
         }
     }
 }

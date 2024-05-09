@@ -110,7 +110,7 @@ namespace EmailApp
                     string receiverEmail = dgv.Rows[e.RowIndex].Cells["ReceiverEmail"].Value.ToString();
                     string date = dgv.Rows[e.RowIndex].Cells["DateSent"].Value.ToString();
 
-                    Form3 form = new Form3(receiverEmail, date, emailSubject, emailBody);
+                    Form3 form = new Form3(receiverEmail, date, emailSubject, emailBody, "Receipent: ");
                     form.Show();
                 }
             }

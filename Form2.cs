@@ -21,9 +21,11 @@ namespace EmailApp
         public Form2(string emailUser)
         {
             InitializeComponent();
+            SetupDataGridViewHeaderStyles();
 
             this.emailUser = emailUser;
             LoadEmails(emailUser);
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -55,6 +57,34 @@ namespace EmailApp
             }
         }
 
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Customize background color
+            e.CellStyle.BackColor = System.Drawing.Color.FromArgb(29, 1, 50);
+
+            // Customize font
+            e.CellStyle.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 12, System.Drawing.FontStyle.Bold);
+
+            // Customize text color
+            e.CellStyle.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void SetupDataGridViewHeaderStyles()
+        {
+            // Set the column headers' style
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(29, 1, 50);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 12, System.Drawing.FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+
+            // Set the row headers' style
+            dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(29, 1, 50);
+            dataGridView1.RowHeadersDefaultCellStyle.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 12, System.Drawing.FontStyle.Bold);
+            dataGridView1.RowHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+
+            // Optionally, you can enable row headers if they are not already visible
+            dataGridView1.RowHeadersVisible = true;
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -74,7 +104,7 @@ namespace EmailApp
                     string senderEmail = dgv.Rows[e.RowIndex].Cells["SenderEmail"].Value.ToString();
                     string date = dgv.Rows[e.RowIndex].Cells["DateSent"].Value.ToString();
 
-                    Form3 form = new Form3(senderEmail, date, emailSubject, emailBody);
+                    Form3 form = new Form3(senderEmail, date, emailSubject, emailBody, "Sender: ");
 
                     form.Show();
 
@@ -97,7 +127,7 @@ namespace EmailApp
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form5 form = new Form5(1);
+            Form5 form = new Form5(emailUser);
             form.Show();
         }
 

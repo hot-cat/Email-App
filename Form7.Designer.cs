@@ -153,9 +153,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 22);
+            label1.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(23, 17);
             label1.Name = "label1";
-            label1.Size = new Size(46, 15);
+            label1.Size = new Size(55, 19);
             label1.TabIndex = 13;
             label1.Text = "Sender:";
             // 
@@ -169,63 +171,77 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(164, 21);
+            label2.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(164, 15);
             label2.Name = "label2";
-            label2.Size = new Size(62, 15);
+            label2.Size = new Size(74, 19);
             label2.TabIndex = 15;
             label2.Text = "Recepient:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(302, 21);
+            label3.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLightLight;
+            label3.Location = new Point(302, 17);
             label3.Name = "label3";
-            label3.Size = new Size(34, 15);
+            label3.Size = new Size(41, 19);
             label3.TabIndex = 16;
             label3.Text = "Date:";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(419, 22);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(59, 19);
             label4.TabIndex = 17;
             label4.Text = "Subject:";
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.ControlLightLight;
             label5.Location = new Point(844, 21);
             label5.Name = "label5";
-            label5.Size = new Size(39, 15);
+            label5.Size = new Size(48, 19);
             label5.TabIndex = 18;
             label5.Text = "Email:";
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ControlLightLight;
             label6.Location = new Point(1007, 15);
             label6.Name = "label6";
-            label6.Size = new Size(67, 15);
+            label6.Size = new Size(81, 19);
             label6.TabIndex = 19;
             label6.Text = "First Name:";
             // 
             // label7
             // 
             label7.AutoSize = true;
+            label7.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ControlLightLight;
             label7.Location = new Point(1155, 15);
             label7.Name = "label7";
-            label7.Size = new Size(66, 15);
+            label7.Size = new Size(80, 19);
             label7.TabIndex = 20;
             label7.Text = "Last Name:";
             // 
             // label8
             // 
             label8.AutoSize = true;
+            label8.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.ControlLightLight;
             label8.Location = new Point(1348, 14);
             label8.Name = "label8";
-            label8.Size = new Size(60, 15);
+            label8.Size = new Size(71, 19);
             label8.TabIndex = 21;
             label8.Text = "Profesion:";
             // 
@@ -233,6 +249,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(29, 1, 50);
             ClientSize = new Size(1692, 870);
             Controls.Add(label8);
             Controls.Add(label7);

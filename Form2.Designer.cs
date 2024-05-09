@@ -46,37 +46,46 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.FromArgb(29, 1, 50);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.GridColor = SystemColors.ButtonFace;
             dataGridView1.Location = new Point(148, 82);
-            dataGridView1.Margin = new Padding(2, 2, 2, 2);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
             dataGridView1.Size = new Size(1080, 458);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // button1
             // 
-            button1.Location = new Point(27, 91);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.BackColor = Color.FromArgb(192, 0, 192);
+            button1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(19, 82);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(78, 20);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
             button1.Text = "Compose";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(192, 0, 192);
+            button2.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.ControlLightLight;
             button2.Location = new Point(27, 131);
-            button2.Margin = new Padding(2, 2, 2, 2);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(78, 20);
+            button2.Size = new Size(78, 27);
             button2.TabIndex = 2;
             button2.Text = "Sent";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // label1
@@ -90,30 +99,36 @@
             // 
             // button3
             // 
-            button3.Location = new Point(1150, 58);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.BackColor = Color.FromArgb(192, 0, 192);
+            button3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(1150, 52);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(78, 20);
+            button3.Size = new Size(78, 26);
             button3.TabIndex = 4;
             button3.Text = "Reload";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(19, 513);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.BackColor = Color.FromArgb(192, 0, 192);
+            button4.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.ControlLightLight;
+            button4.Location = new Point(19, 480);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
-            button4.Size = new Size(102, 20);
+            button4.Size = new Size(102, 53);
             button4.TabIndex = 5;
             button4.Text = "My Account";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(155, 35);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(160, 23);
             textBox1.TabIndex = 6;
@@ -121,27 +136,31 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(158, 10);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(46, 15);
+            label2.Size = new Size(55, 19);
             label2.TabIndex = 7;
             label2.Text = "Sender:";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLightLight;
             label3.Location = new Point(332, 10);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(34, 15);
+            label3.Size = new Size(41, 19);
             label3.TabIndex = 9;
             label3.Text = "Date:";
             // 
             // textBox2
             // 
             textBox2.Location = new Point(330, 35);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(106, 23);
             textBox2.TabIndex = 8;
@@ -149,36 +168,42 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(472, 10);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(59, 19);
             label4.TabIndex = 11;
             label4.Text = "Subject:";
             // 
             // textBox3
             // 
             textBox3.Location = new Point(470, 35);
-            textBox3.Margin = new Padding(2, 2, 2, 2);
+            textBox3.Margin = new Padding(2);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(498, 23);
             textBox3.TabIndex = 10;
             // 
             // button5
             // 
+            button5.BackColor = Color.FromArgb(192, 0, 192);
+            button5.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ControlLightLight;
             button5.Location = new Point(986, 33);
-            button5.Margin = new Padding(2, 2, 2, 2);
+            button5.Margin = new Padding(2);
             button5.Name = "button5";
-            button5.Size = new Size(78, 20);
+            button5.Size = new Size(78, 25);
             button5.TabIndex = 12;
             button5.Text = "Search";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(29, 1, 50);
             ClientSize = new Size(1237, 547);
             Controls.Add(button5);
             Controls.Add(label4);
@@ -193,7 +218,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Form2";
             Text = "Inbox";
             Load += Form2_Load;

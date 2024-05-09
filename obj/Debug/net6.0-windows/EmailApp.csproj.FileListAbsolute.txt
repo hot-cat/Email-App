@@ -56,3 +56,4 @@ C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.genruntimeconfig
 C:\Work\source code\Email-App\obj\Debug\net6.0-windows\ref\EmailApp.dll
 C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form6.resources
 C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Form7.resources
+C:\Work\source code\Email-App\obj\Debug\net6.0-windows\EmailApp.Properties.Resources.resources
